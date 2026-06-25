@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import Header from '@/components/medical/Header';
+import { specialties } from '@/data/medical';
 
 const stats = [
   { value: '128 450', label: 'пациентов записано', icon: 'CalendarCheck' },
@@ -11,25 +14,10 @@ const stats = [
 ];
 
 const quickActions = [
-  { title: 'Записаться к врачу', desc: 'Приём по 50+ специальностям', icon: 'UserPlus', color: 'from-[#00c9a6] to-[#00a88c]' },
-  { title: 'Выбрать клинику', desc: 'Рейтинги и отзывы пациентов', icon: 'Building2', color: 'from-[#ffad00] to-[#ff9100]' },
-  { title: 'Записаться на диагностику', desc: 'МРТ, КТ, УЗИ, анализы', icon: 'Activity', color: 'from-[#00c9a6] to-[#00a88c]' },
-  { title: 'Медицинские услуги', desc: 'Полный каталог процедур', icon: 'HeartPulse', color: 'from-[#ffad00] to-[#ff9100]' },
-];
-
-const specialties = [
-  { name: 'Терапевт', icon: 'Stethoscope' },
-  { name: 'Кардиолог', icon: 'HeartPulse' },
-  { name: 'Невролог', icon: 'Brain' },
-  { name: 'Офтальмолог', icon: 'Eye' },
-  { name: 'Стоматолог', icon: 'Smile' },
-  { name: 'Гинеколог', icon: 'Venus' },
-  { name: 'Уролог', icon: 'Mars' },
-  { name: 'Дерматолог', icon: 'Hand' },
-  { name: 'Эндокринолог', icon: 'Pill' },
-  { name: 'Хирург', icon: 'Scissors' },
-  { name: 'Лор', icon: 'Ear' },
-  { name: 'Педиатр', icon: 'Baby' },
+  { title: 'Записаться к врачу', desc: 'Приём по 50+ специальностям', icon: 'UserPlus', color: 'from-[#00c9a6] to-[#00a88c]', path: '/doctors' },
+  { title: 'Выбрать клинику', desc: 'Рейтинги и отзывы пациентов', icon: 'Building2', color: 'from-[#ffad00] to-[#ff9100]', path: '/clinics' },
+  { title: 'Записаться на диагностику', desc: 'МРТ, КТ, УЗИ, анализы', icon: 'Activity', color: 'from-[#00c9a6] to-[#00a88c]', path: '/diagnostic-centers' },
+  { title: 'Медицинские услуги', desc: 'Полный каталог процедур', icon: 'HeartPulse', color: 'from-[#ffad00] to-[#ff9100]', path: '/diagnostics' },
 ];
 
 const reviews = [
@@ -57,26 +45,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-border">
-        <div className="container flex items-center justify-between h-16 px-4">
-          <div className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#00c9a6] to-[#ffad00] flex items-center justify-center">
-              <Icon name="Plus" size={22} className="text-white" />
-            </div>
-            <span className="font-heading font-extrabold text-xl tracking-tight">МедПортал</span>
-          </div>
-          <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-muted-foreground">
-            <a href="#" className="hover:text-[#00c9a6] transition-colors">Врачи</a>
-            <a href="#" className="hover:text-[#00c9a6] transition-colors">Клиники</a>
-            <a href="#" className="hover:text-[#00c9a6] transition-colors">Диагностика</a>
-            <a href="#" className="hover:text-[#00c9a6] transition-colors">Услуги</a>
-          </nav>
-          <Button className="bg-[#00c9a6] hover:bg-[#00a88c] text-white rounded-full font-semibold">
-            <Icon name="Phone" size={16} className="mr-1" /> Связаться
-          </Button>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero */}
       <section className="relative overflow-hidden">
@@ -139,7 +108,7 @@ const Index = () => {
       <section className="container px-4 py-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {quickActions.map((a) => (
-            <button key={a.title} className="group text-left bg-white rounded-3xl p-6 shadow-md border border-border hover:shadow-xl transition-all hover:-translate-y-1">
+            <Link to={a.path} key={a.title} className="group text-left bg-white rounded-3xl p-6 shadow-md border border-border hover:shadow-xl transition-all hover:-translate-y-1">
               <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${a.color} flex items-center justify-center mb-4`}>
                 <Icon name={a.icon} size={26} className="text-white" />
               </div>
@@ -148,7 +117,7 @@ const Index = () => {
               <div className="mt-4 flex items-center gap-1 text-sm font-semibold text-[#00c9a6] opacity-0 group-hover:opacity-100 transition-opacity">
                 Перейти <Icon name="ArrowRight" size={16} />
               </div>
-            </button>
+            </Link>
           ))}
         </div>
       </section>
@@ -160,18 +129,18 @@ const Index = () => {
             <h2 className="font-heading font-extrabold text-3xl md:text-4xl mb-2">Специальности врачей</h2>
             <p className="text-muted-foreground">Выберите нужного специалиста</p>
           </div>
-          <a href="#" className="hidden md:flex items-center gap-1 text-[#00c9a6] font-semibold hover:gap-2 transition-all">
+          <Link to="/doctors" className="hidden md:flex items-center gap-1 text-[#00c9a6] font-semibold hover:gap-2 transition-all">
             Все специальности <Icon name="ArrowRight" size={18} />
-          </a>
+          </Link>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
           {specialties.map((sp) => (
-            <button key={sp.name} className="flex flex-col items-center gap-3 bg-white rounded-2xl p-5 border border-border hover:border-[#00c9a6] hover:shadow-lg transition-all group">
+            <Link to="/doctors" key={sp.name} className="flex flex-col items-center gap-3 bg-white rounded-2xl p-5 border border-border hover:border-[#00c9a6] hover:shadow-lg transition-all group">
               <div className="w-14 h-14 rounded-2xl bg-[#e6faf6] flex items-center justify-center group-hover:bg-[#00c9a6] transition-colors">
                 <Icon name={sp.icon} size={26} className="text-[#00c9a6] group-hover:text-white transition-colors" />
               </div>
               <span className="font-medium text-sm text-center">{sp.name}</span>
-            </button>
+            </Link>
           ))}
         </div>
       </section>
@@ -215,13 +184,13 @@ const Index = () => {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {diagnostics.map((d) => (
-            <button key={d.name} className="bg-white rounded-2xl p-5 border border-border hover:shadow-lg hover:border-[#ffad00] transition-all text-left group">
+            <Link to="/diagnostics" key={d.name} className="bg-white rounded-2xl p-5 border border-border hover:shadow-lg hover:border-[#ffad00] transition-all text-left group">
               <div className="w-12 h-12 rounded-xl bg-[#fff5e0] flex items-center justify-center mb-3 group-hover:bg-[#ffad00] transition-colors">
                 <Icon name={d.icon} size={24} className="text-[#ffad00] group-hover:text-white transition-colors" />
               </div>
               <div className="font-heading font-bold text-lg">{d.name}</div>
               <div className="text-xs text-muted-foreground">{d.desc}</div>
-            </button>
+            </Link>
           ))}
         </div>
       </section>

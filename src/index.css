@@ -117,4 +117,11 @@
   .hover-scale {
     @apply transition-transform duration-300 hover:scale-105;
   }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
