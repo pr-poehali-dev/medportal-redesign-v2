@@ -7,17 +7,17 @@ import Header from '@/components/medical/Header';
 import { specialties } from '@/data/medical';
 
 const stats = [
-  { value: '128 450', label: 'пациентов записано', icon: 'CalendarCheck' },
-  { value: '36 200', label: 'отзывов о врачах', icon: 'MessageSquare' },
-  { value: '12 800', label: 'врачей в базе', icon: 'Stethoscope' },
-  { value: '1 940', label: 'клиник в базе', icon: 'Building2' },
+  { value: '128 450', label: 'пациентов записано', icon: 'CalendarCheck', color: 'from-[#00c9a6] to-[#00a88c]', bg: 'bg-[#e6faf6]', text: 'text-[#00a88c]' },
+  { value: '36 200', label: 'отзывов о врачах', icon: 'MessageSquare', color: 'from-[#ffad00] to-[#ff9100]', bg: 'bg-[#fff5e0]', text: 'text-[#cc8a00]' },
+  { value: '12 800', label: 'врачей в базе', icon: 'Stethoscope', color: 'from-[#00c9a6] to-[#00a88c]', bg: 'bg-[#e6faf6]', text: 'text-[#00a88c]' },
+  { value: '1 940', label: 'клиник в базе', icon: 'Building2', color: 'from-[#ffad00] to-[#ff9100]', bg: 'bg-[#fff5e0]', text: 'text-[#cc8a00]' },
 ];
 
 const quickActions = [
-  { title: 'Записаться к врачу', desc: 'Приём по 50+ специальностям', icon: 'UserPlus', color: 'from-[#00c9a6] to-[#00a88c]', path: '/doctors' },
-  { title: 'Выбрать клинику', desc: 'Рейтинги и отзывы пациентов', icon: 'Building2', color: 'from-[#ffad00] to-[#ff9100]', path: '/clinics' },
-  { title: 'Записаться на диагностику', desc: 'МРТ, КТ, УЗИ, анализы', icon: 'Activity', color: 'from-[#00c9a6] to-[#00a88c]', path: '/diagnostic-centers' },
-  { title: 'Медицинские услуги', desc: 'Полный каталог процедур', icon: 'HeartPulse', color: 'from-[#ffad00] to-[#ff9100]', path: '/diagnostics' },
+  { title: 'Записаться к врачу', desc: 'Приём у 12 800 специалистов по 50+ специальностям', icon: 'UserPlus', tag: 'Онлайн 24/7', color: 'from-[#00c9a6] to-[#00a88c]', light: 'bg-[#e6faf6]', path: '/doctors' },
+  { title: 'Выбрать клинику', desc: 'Рейтинги, отзывы и контакты 1940 клиник', icon: 'Building2', tag: '1940 клиник', color: 'from-[#ffad00] to-[#ff9100]', light: 'bg-[#fff5e0]', path: '/clinics' },
+  { title: 'Диагностика', desc: 'МРТ, КТ, УЗИ и анализы в лучших центрах', icon: 'ScanLine', tag: 'Без очередей', color: 'from-[#00c9a6] to-[#00a88c]', light: 'bg-[#e6faf6]', path: '/diagnostic-centers' },
+  { title: 'Медицинские услуги', desc: 'Полный каталог процедур и услуг для всей семьи', icon: 'HeartPulse', tag: '320+ услуг', color: 'from-[#ffad00] to-[#ff9100]', light: 'bg-[#fff5e0]', path: '/diagnostics' },
 ];
 
 const reviews = [
@@ -49,56 +49,51 @@ const Index = () => {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#e6faf6] via-white to-[#fff5e0]" />
-        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[#00c9a6]/10 blur-3xl" />
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-[#ffad00]/10 blur-3xl" />
-        <div className="container relative px-4 py-12 md:py-20 grid lg:grid-cols-2 gap-10 items-center">
-          <div className="animate-fade-in">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white shadow-sm text-sm font-medium text-[#00a88c] mb-5">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#00c9a6] via-[#00b898] to-[#009e84]" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-white/5 -translate-y-1/2 translate-x-1/3" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-[#ffad00]/20 translate-y-1/2 -translate-x-1/4 blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 rounded-full bg-white/5 -translate-x-1/2 -translate-y-1/2" />
+        <div className="container relative px-4 py-16 md:py-24">
+          <div className="max-w-3xl mx-auto text-center animate-fade-in">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-sm text-sm font-medium text-white mb-6">
               <Icon name="ShieldCheck" size={16} /> Проверенные врачи и клиники
             </span>
-            <h1 className="font-heading font-extrabold text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-5">
-              Запись к врачу <span className="text-gradient">за пару кликов</span>
+            <h1 className="font-heading font-extrabold text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-5 text-white">
+              Запись к врачу <br className="hidden md:block" />
+              <span className="text-[#ffad00]">за пару кликов</span>
             </h1>
-            <p className="text-lg text-muted-foreground mb-8 max-w-md">
+            <p className="text-lg text-white/80 mb-10 max-w-xl mx-auto">
               Найдите лучшего специалиста, выберите удобную клинику и запишитесь на приём онлайн в любое время.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-xl">
+            <div className="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto">
               <div className="relative flex-1">
                 <Icon name="Search" size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
                 <Input
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Врач, специальность, услуга или клиника..."
-                  className="h-14 pl-12 pr-4 rounded-2xl border-2 bg-white text-base shadow-sm focus-visible:ring-[#00c9a6]"
+                  className="h-14 pl-12 pr-4 rounded-2xl border-0 bg-white text-base shadow-xl focus-visible:ring-[#ffad00]"
                 />
               </div>
-              <Button className="h-14 px-8 rounded-2xl bg-[#ffad00] hover:bg-[#ff9100] text-white font-bold text-base shadow-lg">
+              <Button className="h-14 px-8 rounded-2xl bg-[#ffad00] hover:bg-[#ff9100] text-white font-bold text-base shadow-xl">
                 Найти
               </Button>
             </div>
-          </div>
-          <div className="relative animate-scale-in">
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#00c9a6] to-[#ffad00] rounded-[2.5rem] rotate-3 opacity-20" />
-            <img
-              src="https://cdn.poehali.dev/projects/a0d2824d-f773-4228-be97-e4cd923790fe/files/a01e2ea9-47a3-41da-8562-f2c3d9e2e14b.jpg"
-              alt="Медицинская помощь"
-              className="relative rounded-[2.5rem] shadow-2xl w-full object-cover aspect-square"
-            />
           </div>
         </div>
       </section>
 
       {/* Stats */}
-      <section className="container px-4 -mt-6 relative z-10">
+      <section className="container px-4 -mt-8 relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {stats.map((s) => (
-            <div key={s.label} className="bg-white rounded-2xl p-5 shadow-lg border border-border hover-scale">
-              <div className="w-11 h-11 rounded-xl bg-[#e6faf6] flex items-center justify-center mb-3">
-                <Icon name={s.icon} size={22} className="text-[#00c9a6]" />
+            <div key={s.label} className="bg-white rounded-3xl p-6 shadow-xl border border-border hover-scale overflow-hidden relative">
+              <div className={`absolute -top-6 -right-6 w-24 h-24 rounded-full bg-gradient-to-br ${s.color} opacity-10`} />
+              <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${s.color} flex items-center justify-center mb-4`}>
+                <Icon name={s.icon} size={22} className="text-white" />
               </div>
-              <div className="font-heading font-extrabold text-2xl md:text-3xl">{s.value}</div>
-              <div className="text-sm text-muted-foreground">{s.label}</div>
+              <div className={`font-heading font-extrabold text-3xl md:text-4xl mb-1 ${s.text}`}>{s.value}</div>
+              <div className="text-sm text-muted-foreground font-medium">{s.label}</div>
             </div>
           ))}
         </div>
@@ -106,16 +101,27 @@ const Index = () => {
 
       {/* Quick actions */}
       <section className="container px-4 py-16">
+        <div className="text-center mb-10">
+          <h2 className="font-heading font-extrabold text-3xl md:text-4xl mb-2">Чем мы можем помочь?</h2>
+          <p className="text-muted-foreground">Выберите нужный раздел и начните прямо сейчас</p>
+        </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {quickActions.map((a) => (
-            <Link to={a.path} key={a.title} className="group text-left bg-white rounded-3xl p-6 shadow-md border border-border hover:shadow-xl transition-all hover:-translate-y-1">
-              <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${a.color} flex items-center justify-center mb-4`}>
-                <Icon name={a.icon} size={26} className="text-white" />
-              </div>
-              <h3 className="font-heading font-bold text-lg mb-1">{a.title}</h3>
-              <p className="text-sm text-muted-foreground">{a.desc}</p>
-              <div className="mt-4 flex items-center gap-1 text-sm font-semibold text-[#00c9a6] opacity-0 group-hover:opacity-100 transition-opacity">
-                Перейти <Icon name="ArrowRight" size={16} />
+            <Link to={a.path} key={a.title} className="group relative text-left bg-white rounded-3xl p-6 shadow-md border border-border hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+              <div className={`absolute -bottom-8 -right-8 w-32 h-32 rounded-full bg-gradient-to-br ${a.color} opacity-10 group-hover:opacity-20 transition-opacity`} />
+              <div className={`absolute -top-4 -left-4 w-20 h-20 rounded-full bg-gradient-to-br ${a.color} opacity-5`} />
+              <div className="relative">
+                <div className="flex items-start justify-between mb-5">
+                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${a.color} flex items-center justify-center shadow-lg`}>
+                    <Icon name={a.icon} size={26} className="text-white" />
+                  </div>
+                  <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${a.light} text-[#00a88c]`}>{a.tag}</span>
+                </div>
+                <h3 className="font-heading font-extrabold text-xl mb-2">{a.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5">{a.desc}</p>
+                <div className={`flex items-center gap-2 text-sm font-bold bg-gradient-to-r ${a.color} bg-clip-text text-transparent`}>
+                  Перейти <Icon name="ArrowRight" size={16} className="text-[#00c9a6] group-hover:translate-x-1 transition-transform" />
+                </div>
               </div>
             </Link>
           ))}
