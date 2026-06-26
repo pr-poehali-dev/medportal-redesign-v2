@@ -3,6 +3,30 @@ import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { Doctor, clinicSlots, dates, timeSlots, metroByClinic } from '@/data/medical';
 
+const fmt = (n: number) => n.toLocaleString('ru-RU');
+
+const discount = (old: number, cur: number) => Math.round((1 - cur / old) * 100);
+
+const PriceBlock = ({ icon, label, price, oldPrice }: { icon: string; label: string; price: number; oldPrice?: number }) => (
+  <div className="flex-1 bg-muted/50 rounded-2xl px-4 py-3">
+    <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
+      <Icon name={icon} size={13} />
+      {label}
+    </div>
+    <div className="flex items-end gap-2 flex-wrap">
+      <span className="font-heading font-extrabold text-xl text-[#00a88c]">{fmt(price)} ₽</span>
+      {oldPrice && (
+        <>
+          <span className="text-sm text-muted-foreground line-through">{fmt(oldPrice)} ₽</span>
+          <span className="text-xs font-bold text-white bg-[#ff4d4d] rounded-full px-2 py-0.5">
+            −{discount(oldPrice, price)}%
+          </span>
+        </>
+      )}
+    </div>
+  </div>
+);
+
 const DoctorCard = ({ doctor }: { doctor: Doctor }) => {
   const [clinic, setClinic] = useState(clinicSlots[0]);
   const [date, setDate] = useState(dates[0]);
@@ -54,10 +78,22 @@ const DoctorCard = ({ doctor }: { doctor: Doctor }) => {
               <Icon name="Phone" size={15} className="text-[#00c9a6]" /> {doctor.phone}
             </span>
           </div>
-          <p className="text-sm text-foreground/80 leading-relaxed mb-3">{doctor.about}</p>
-          <div className="font-heading font-extrabold text-2xl text-[#00a88c]">
-            {doctor.price.toLocaleString('ru-RU')} ₽
-            <span className="text-sm font-medium text-muted-foreground ml-1">за приём</span>
+          <p className="text-sm text-foreground/80 leading-relaxed mb-4">{doctor.about}</p>
+
+          {/* Prices */}
+          <div className="flex gap-3 flex-wrap">
+            <PriceBlock
+              icon="Building2"
+              label="Приём в клинике"
+              price={doctor.prices.clinic}
+              oldPrice={doctor.prices.clinicOld}
+            />
+            <PriceBlock
+              icon="House"
+              label="Выезд на дом"
+              price={doctor.prices.home}
+              oldPrice={doctor.prices.homeOld}
+            />
           </div>
         </div>
 
@@ -80,7 +116,7 @@ const DoctorCard = ({ doctor }: { doctor: Doctor }) => {
           <div className="flex flex-wrap gap-1.5 mb-3">
             {(metroByClinic[clinic] ?? []).map((m) => (
               <span key={m} className="flex items-center gap-1 text-xs text-muted-foreground">
-                <Icon name="MapPin" size={12} className="text-[#ffad00]" /> {m}
+                <Icon name="Train" size={12} className="text-[#ffad00]" /> {m}
               </span>
             ))}
           </div>

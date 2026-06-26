@@ -1,9 +1,10 @@
 import Header from '@/components/medical/Header';
 import SearchBar from '@/components/medical/SearchBar';
-import SpecialtiesStrip from '@/components/medical/SpecialtiesStrip';
 import FilterButton from '@/components/medical/FilterButton';
 import Crumbs from '@/components/medical/Crumbs';
 import DoctorCard from '@/components/medical/DoctorCard';
+import PageBanner from '@/components/medical/PageBanner';
+import Footer from '@/components/medical/Footer';
 import Icon from '@/components/ui/icon';
 import { doctors, reviews14, filterGroups } from '@/data/medical';
 
@@ -11,10 +12,22 @@ const Doctors = () => {
   return (
     <div className="min-h-screen bg-muted/30">
       <Header />
+
+      <PageBanner
+        icon="Stethoscope"
+        title="Врачи в Москве"
+        subtitle="Онлайн-запись к специалисту за 1 минуту"
+        stats={[
+          { value: '12 800', label: 'врачей' },
+          { value: '36 200', label: 'отзывов' },
+          { value: '50+', label: 'специальностей' },
+        ]}
+        color="mint"
+      />
+
       <div className="bg-white border-b border-border">
-        <div className="container px-4 py-6 space-y-5">
+        <div className="container px-4 py-5">
           <SearchBar placeholder="Введите имя врача или специальность..." />
-          <SpecialtiesStrip />
         </div>
       </div>
 
@@ -66,6 +79,7 @@ const Doctors = () => {
           </div>
         </section>
       </div>
+      <Footer />
     </div>
   );
 };

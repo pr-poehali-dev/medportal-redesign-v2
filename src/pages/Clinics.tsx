@@ -1,19 +1,32 @@
 import Header from '@/components/medical/Header';
 import SearchBar from '@/components/medical/SearchBar';
-import SpecialtiesStrip from '@/components/medical/SpecialtiesStrip';
 import FilterButton from '@/components/medical/FilterButton';
 import Crumbs from '@/components/medical/Crumbs';
 import ClinicCard from '@/components/medical/ClinicCard';
+import PageBanner from '@/components/medical/PageBanner';
+import Footer from '@/components/medical/Footer';
 import { clinics, clinicFilterGroups } from '@/data/medical';
 
 const Clinics = () => {
   return (
     <div className="min-h-screen bg-muted/30">
       <Header />
+
+      <PageBanner
+        icon="Building2"
+        title="Медицинские клиники"
+        subtitle="Найдите проверенную клинику рядом с домом или работой"
+        stats={[
+          { value: '1 940', label: 'клиник' },
+          { value: '4.8', label: 'средний рейтинг' },
+          { value: '24/7', label: 'часть работает' },
+        ]}
+        color="gold"
+      />
+
       <div className="bg-white border-b border-border">
-        <div className="container px-4 py-6 space-y-5">
+        <div className="container px-4 py-5">
           <SearchBar placeholder="Введите название клиники или район..." />
-          <SpecialtiesStrip />
         </div>
       </div>
 
@@ -41,6 +54,7 @@ const Clinics = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

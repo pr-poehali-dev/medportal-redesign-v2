@@ -20,6 +20,13 @@ export const metroByClinic: Record<string, string[]> = {
   'СитиМед': ['Парк культуры', 'Фрунзенская'],
 };
 
+export interface DoctorPrice {
+  clinic: number;
+  clinicOld?: number;
+  home: number;
+  homeOld?: number;
+}
+
 export interface Doctor {
   id: number;
   name: string;
@@ -29,7 +36,7 @@ export interface Doctor {
   reviews: number;
   experience: string;
   category: string;
-  price: number;
+  prices: DoctorPrice;
   phone: string;
   about: string;
 }
@@ -44,7 +51,7 @@ export const doctors: Doctor[] = [
     reviews: 248,
     experience: '15 лет',
     category: 'Высшая категория',
-    price: 2500,
+    prices: { clinic: 2500, clinicOld: 3200, home: 4500 },
     phone: '+7 (495) 123-45-67',
     about: 'Кандидат медицинских наук. Специализируется на диагностике и лечении сердечно-сосудистых заболеваний, ведёт пациентов с гипертонией и аритмией.',
   },
@@ -57,7 +64,7 @@ export const doctors: Doctor[] = [
     reviews: 187,
     experience: '12 лет',
     category: 'Высшая категория',
-    price: 2200,
+    prices: { clinic: 2200, home: 4000, homeOld: 5000 },
     phone: '+7 (495) 234-56-78',
     about: 'Опытный невролог, специалист по лечению головных болей, остеохондроза и нарушений сна. Использует современные методы диагностики.',
   },
@@ -70,7 +77,7 @@ export const doctors: Doctor[] = [
     reviews: 156,
     experience: '9 лет',
     category: 'Первая категория',
-    price: 1900,
+    prices: { clinic: 1900, clinicOld: 2400, home: 3500, homeOld: 4200 },
     phone: '+7 (495) 345-67-89',
     about: 'Терапевт широкого профиля. Ведёт комплексное наблюдение пациентов, занимается профилактикой и лечением эндокринных нарушений.',
   },
@@ -83,7 +90,7 @@ export const doctors: Doctor[] = [
     reviews: 203,
     experience: '18 лет',
     category: 'Высшая категория',
-    price: 2800,
+    prices: { clinic: 2800, home: 5000 },
     phone: '+7 (495) 456-78-90',
     about: 'Врач-офтальмолог высшей категории. Проводит полную диагностику зрения, подбор линз и лечение заболеваний глаз.',
   },

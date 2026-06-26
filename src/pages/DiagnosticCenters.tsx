@@ -1,19 +1,32 @@
 import Header from '@/components/medical/Header';
 import SearchBar from '@/components/medical/SearchBar';
-import SpecialtiesStrip from '@/components/medical/SpecialtiesStrip';
 import FilterButton from '@/components/medical/FilterButton';
 import Crumbs from '@/components/medical/Crumbs';
 import ClinicCard from '@/components/medical/ClinicCard';
+import PageBanner from '@/components/medical/PageBanner';
+import Footer from '@/components/medical/Footer';
 import { diagCenters, clinicFilterGroups } from '@/data/medical';
 
 const DiagnosticCenters = () => {
   return (
     <div className="min-h-screen bg-muted/30">
       <Header />
+
+      <PageBanner
+        icon="ScanLine"
+        title="Диагностические центры"
+        subtitle="МРТ, КТ, УЗИ и лаборатория — без очередей"
+        stats={[
+          { value: '850+', label: 'центров' },
+          { value: '3 000+', label: 'видов исследований' },
+          { value: '24 ч', label: 'выдача результатов' },
+        ]}
+        color="mint"
+      />
+
       <div className="bg-white border-b border-border">
-        <div className="container px-4 py-6 space-y-5">
+        <div className="container px-4 py-5">
           <SearchBar placeholder="Введите вид исследования или центр..." />
-          <SpecialtiesStrip />
         </div>
       </div>
 
@@ -41,6 +54,7 @@ const DiagnosticCenters = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

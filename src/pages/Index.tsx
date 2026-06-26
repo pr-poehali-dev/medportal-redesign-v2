@@ -4,6 +4,7 @@ import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Header from '@/components/medical/Header';
+import Footer from '@/components/medical/Footer';
 import { specialties } from '@/data/medical';
 
 const stats = [
@@ -221,25 +222,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border py-10">
-        <div className="container px-4 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00c9a6] to-[#ffad00] flex items-center justify-center">
-              <Icon name="Plus" size={18} className="text-white" />
-            </div>
-            <span className="font-heading font-bold">МедПортал</span>
-          </div>
-          <p className="text-sm text-muted-foreground">© 2026 МедПортал. Все права защищены.</p>
-          <div className="flex gap-3">
-            {['Phone', 'Mail', 'MapPin'].map((ic) => (
-              <div key={ic} className="w-9 h-9 rounded-full bg-muted flex items-center justify-center hover:bg-[#00c9a6] hover:text-white transition-colors cursor-pointer">
-                <Icon name={ic} size={16} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

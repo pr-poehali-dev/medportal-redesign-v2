@@ -1,5 +1,7 @@
 import Header from '@/components/medical/Header';
 import Crumbs from '@/components/medical/Crumbs';
+import PageBanner from '@/components/medical/PageBanner';
+import Footer from '@/components/medical/Footer';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { diagnosticCategories } from '@/data/medical';
@@ -8,6 +10,18 @@ const Diagnostics = () => {
   return (
     <div className="min-h-screen bg-muted/30">
       <Header />
+
+      <PageBanner
+        icon="Activity"
+        title="Диагностика и обследования"
+        subtitle="Полный каталог исследований — запись онлайн без очереди"
+        stats={[
+          { value: '3 000+', label: 'видов исследований' },
+          { value: '850+', label: 'центров' },
+          { value: '24 ч', label: 'выдача результатов' },
+        ]}
+        color="gold"
+      />
 
       <div className="container px-4 py-8">
         <Crumbs items={[{ label: 'Диагностика' }]} />
@@ -58,6 +72,7 @@ const Diagnostics = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
