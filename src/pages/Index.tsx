@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Header from '@/components/medical/Header';
 import Footer from '@/components/medical/Footer';
+import FloatingIcons from '@/components/medical/FloatingIcons';
+import EcgLine from '@/components/medical/EcgLine';
 import { specialties } from '@/data/medical';
 
 const stats = [
@@ -54,9 +56,15 @@ const Index = () => {
         <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-white/5 -translate-y-1/2 translate-x-1/3" />
         <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-[#ffad00]/20 translate-y-1/2 -translate-x-1/4 blur-3xl" />
         <div className="absolute top-1/2 left-1/2 w-96 h-96 rounded-full bg-white/5 -translate-x-1/2 -translate-y-1/2" />
+        <EcgLine className="absolute top-[18%] left-0 w-full h-16 opacity-20" />
+        <FloatingIcons />
         <div className="container relative px-4 py-16 md:py-24">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-sm text-sm font-medium text-white mb-6">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-[#ffad00] animate-pulse-ring" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#ffad00]" />
+              </span>
               <Icon name="ShieldCheck" size={16} /> Проверенные врачи и клиники
             </span>
             <h1 className="font-heading font-extrabold text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-5 text-white">
@@ -91,7 +99,7 @@ const Index = () => {
             <div key={s.label} className="bg-white rounded-3xl p-6 shadow-xl border border-border hover-scale overflow-hidden relative">
               <div className={`absolute -top-6 -right-6 w-24 h-24 rounded-full bg-gradient-to-br ${s.color} opacity-10`} />
               <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${s.color} flex items-center justify-center mb-4`}>
-                <Icon name={s.icon} size={22} className="text-white" />
+                <Icon name={s.icon} size={22} className={`text-white ${s.icon === 'CalendarCheck' ? 'animate-heartbeat' : ''}`} />
               </div>
               <div className={`font-heading font-extrabold text-3xl md:text-4xl mb-1 ${s.text}`}>{s.value}</div>
               <div className="text-sm text-muted-foreground font-medium">{s.label}</div>
@@ -113,7 +121,7 @@ const Index = () => {
               <div className={`absolute -top-4 -left-4 w-20 h-20 rounded-full bg-gradient-to-br ${a.color} opacity-5`} />
               <div className="relative">
                 <div className="flex items-start justify-between mb-5">
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${a.color} flex items-center justify-center shadow-lg`}>
+                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${a.color} flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300`}>
                     <Icon name={a.icon} size={26} className="text-white" />
                   </div>
                   <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${a.light} text-[#00a88c]`}>{a.tag}</span>
@@ -207,6 +215,8 @@ const Index = () => {
         <div className="bg-gradient-to-br from-[#00c9a6] to-[#00a88c] rounded-[2.5rem] p-8 md:p-12 text-white relative overflow-hidden">
           <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-white/10" />
           <div className="absolute -bottom-20 -left-10 w-72 h-72 rounded-full bg-[#ffad00]/20 blur-2xl" />
+          <Icon name="Plus" size={90} className="absolute top-6 right-10 text-white/10 animate-float-slow hidden md:block" />
+          <Icon name="HeartPulse" size={60} className="absolute bottom-8 right-32 text-white/10 animate-float hidden lg:block" />
           <div className="relative">
             <h2 className="font-heading font-extrabold text-3xl md:text-4xl mb-2">Медицинские услуги</h2>
             <p className="text-white/80 mb-8 max-w-lg">Полный спектр медицинской помощи для всей семьи</p>

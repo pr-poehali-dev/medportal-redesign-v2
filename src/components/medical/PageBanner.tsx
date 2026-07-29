@@ -1,4 +1,5 @@
 import Icon from '@/components/ui/icon';
+import EcgLine from '@/components/medical/EcgLine';
 
 interface Props {
   icon: string;
@@ -14,10 +15,12 @@ const PageBanner = ({ icon, title, subtitle, stats, color = 'mint' }: Props) => 
     <div className={`relative overflow-hidden ${isMint ? 'bg-gradient-to-r from-[#00c9a6] to-[#00a88c]' : 'bg-gradient-to-r from-[#ffad00] to-[#ff9100]'}`}>
       <div className="absolute -top-10 -right-10 w-56 h-56 rounded-full bg-white/10" />
       <div className="absolute -bottom-16 -left-8 w-48 h-48 rounded-full bg-white/5 blur-xl" />
+      <EcgLine className="absolute inset-0 w-full h-full opacity-10" />
+      <Icon name="Plus" size={70} className="absolute -top-4 right-24 text-white/10 animate-float-slow hidden md:block" />
       <div className="container px-4 py-6 relative">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center shrink-0">
+            <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center shrink-0 animate-heartbeat">
               <Icon name={icon} size={24} className="text-white" />
             </div>
             <div>
