@@ -144,6 +144,111 @@ export const diagnosticCategories = [
   { category: 'Рентгенография', icon: 'Bone', services: ['грудной клетки', 'костей и суставов', 'позвоночника', 'придаточных пазух'] },
 ];
 
+export interface MedicalService {
+  name: string;
+  price: number;
+  oldPrice?: number;
+  duration: string;
+}
+
+export interface ServiceCategory {
+  category: string;
+  icon: string;
+  color: string;
+  services: MedicalService[];
+}
+
+export const medicalServiceCategories: ServiceCategory[] = [
+  {
+    category: 'Вызов врача на дом',
+    icon: 'House',
+    color: 'from-[#00c9a6] to-[#00a88c]',
+    services: [
+      { name: 'Терапевт на дом', price: 3500, oldPrice: 4200, duration: '40 мин' },
+      { name: 'Педиатр на дом', price: 3800, duration: '40 мин' },
+      { name: 'Забор анализов на дому', price: 900, duration: '15 мин' },
+      { name: 'Капельница на дому', price: 2600, duration: '60 мин' },
+    ],
+  },
+  {
+    category: 'Вакцинация',
+    icon: 'Syringe',
+    color: 'from-[#ffad00] to-[#ff9100]',
+    services: [
+      { name: 'Вакцинация от гриппа', price: 1200, duration: '15 мин' },
+      { name: 'Вакцинация от клещевого энцефалита', price: 2200, duration: '15 мин' },
+      { name: 'Вакцинация от COVID-19', price: 1500, duration: '15 мин' },
+      { name: 'Консультация перед прививкой', price: 800, duration: '20 мин' },
+    ],
+  },
+  {
+    category: 'Справки и медкнижки',
+    icon: 'FileText',
+    color: 'from-[#00c9a6] to-[#00a88c]',
+    services: [
+      { name: 'Медицинская справка 086/у', price: 1800, oldPrice: 2200, duration: '1 день' },
+      { name: 'Санаторно-курортная карта', price: 2500, duration: '1 день' },
+      { name: 'Личная медицинская книжка', price: 3200, duration: '3 дня' },
+      { name: 'Справка в бассейн', price: 900, duration: '30 мин' },
+    ],
+  },
+  {
+    category: 'Программы чек-ап',
+    icon: 'ClipboardCheck',
+    color: 'from-[#ffad00] to-[#ff9100]',
+    services: [
+      { name: 'Чек-ап «Базовый»', price: 6900, oldPrice: 8900, duration: '2 часа' },
+      { name: 'Чек-ап «Женское здоровье»', price: 9800, duration: '3 часа' },
+      { name: 'Чек-ап «Мужское здоровье»', price: 9500, duration: '3 часа' },
+      { name: 'Чек-ап «Премиум»', price: 15900, oldPrice: 19900, duration: '4 часа' },
+    ],
+  },
+  {
+    category: 'Массаж и физиотерапия',
+    icon: 'Hand',
+    color: 'from-[#00c9a6] to-[#00a88c]',
+    services: [
+      { name: 'Массаж спины', price: 2200, duration: '40 мин' },
+      { name: 'Массаж общий', price: 3500, oldPrice: 4000, duration: '60 мин' },
+      { name: 'Электрофорез', price: 1100, duration: '20 мин' },
+      { name: 'Магнитотерапия', price: 1300, duration: '20 мин' },
+    ],
+  },
+  {
+    category: 'Косметология',
+    icon: 'Sparkles',
+    color: 'from-[#ffad00] to-[#ff9100]',
+    services: [
+      { name: 'Чистка лица', price: 3200, duration: '60 мин' },
+      { name: 'Биоревитализация', price: 7500, oldPrice: 9000, duration: '40 мин' },
+      { name: 'Пилинг лица', price: 2800, duration: '45 мин' },
+      { name: 'Мезотерапия', price: 6200, duration: '40 мин' },
+    ],
+  },
+  {
+    category: 'Стоматология',
+    icon: 'Smile',
+    color: 'from-[#00c9a6] to-[#00a88c]',
+    services: [
+      { name: 'Лечение кариеса', price: 4500, duration: '50 мин' },
+      { name: 'Профессиональная чистка зубов', price: 3800, oldPrice: 4500, duration: '60 мин' },
+      { name: 'Удаление зуба', price: 2800, duration: '30 мин' },
+      { name: 'Консультация стоматолога', price: 500, duration: '20 мин' },
+    ],
+  },
+  {
+    category: 'Реабилитация',
+    icon: 'Activity',
+    color: 'from-[#ffad00] to-[#ff9100]',
+    services: [
+      { name: 'ЛФК индивидуальное занятие', price: 2400, duration: '45 мин' },
+      { name: 'Восстановление после травм', price: 3100, duration: '60 мин' },
+      { name: 'Кинезиотерапия', price: 2900, duration: '50 мин' },
+      { name: 'Механотерапия', price: 1900, duration: '40 мин' },
+    ],
+  },
+];
+
 export const filterGroups = [
   { name: 'Специализация', options: ['Кардиолог', 'Невролог', 'Терапевт', 'Офтальмолог', 'Эндокринолог'] },
   { name: 'Категория врача', options: ['Высшая категория', 'Первая категория', 'Вторая категория'] },

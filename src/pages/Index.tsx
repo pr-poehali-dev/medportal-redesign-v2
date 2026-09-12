@@ -20,7 +20,7 @@ const quickActions = [
   { title: 'Записаться к врачу', desc: 'Приём у 12 800 специалистов по 50+ специальностям', icon: 'UserPlus', tag: 'Онлайн 24/7', color: 'from-[#00c9a6] to-[#00a88c]', light: 'bg-[#e6faf6]', path: '/doctors' },
   { title: 'Выбрать клинику', desc: 'Рейтинги, отзывы и контакты 1940 клиник', icon: 'Building2', tag: '1940 клиник', color: 'from-[#ffad00] to-[#ff9100]', light: 'bg-[#fff5e0]', path: '/clinics' },
   { title: 'Диагностика', desc: 'МРТ, КТ, УЗИ и анализы в лучших центрах', icon: 'ScanLine', tag: 'Без очередей', color: 'from-[#00c9a6] to-[#00a88c]', light: 'bg-[#e6faf6]', path: '/diagnostic-centers' },
-  { title: 'Медицинские услуги', desc: 'Полный каталог процедур и услуг для всей семьи', icon: 'HeartPulse', tag: '320+ услуг', color: 'from-[#ffad00] to-[#ff9100]', light: 'bg-[#fff5e0]', path: '/diagnostics' },
+  { title: 'Медицинские услуги', desc: 'Полный каталог процедур и услуг для всей семьи', icon: 'HeartPulse', tag: '320+ услуг', color: 'from-[#ffad00] to-[#ff9100]', light: 'bg-[#fff5e0]', path: '/services' },
 ];
 
 const reviews = [
@@ -218,16 +218,36 @@ const Index = () => {
           <Icon name="Plus" size={90} className="absolute top-6 right-10 text-white/10 animate-float-slow hidden md:block" />
           <Icon name="HeartPulse" size={60} className="absolute bottom-8 right-32 text-white/10 animate-float hidden lg:block" />
           <div className="relative">
-            <h2 className="font-heading font-extrabold text-3xl md:text-4xl mb-2">Медицинские услуги</h2>
-            <p className="text-white/80 mb-8 max-w-lg">Полный спектр медицинской помощи для всей семьи</p>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 mb-8">
+              <div>
+                <h2 className="font-heading font-extrabold text-3xl md:text-4xl mb-2">Медицинские услуги</h2>
+                <p className="text-white/80 max-w-lg">Полный спектр медицинской помощи для всей семьи</p>
+              </div>
+              <Link
+                to="/services"
+                className="hidden md:inline-flex items-center gap-1 text-sm font-semibold text-white/90 hover:text-white transition-colors shrink-0"
+              >
+                Все услуги и цены <Icon name="ArrowRight" size={16} />
+              </Link>
+            </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {services.map((s) => (
-                <div key={s} className="flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-xl px-4 py-3 hover:bg-white/25 transition-colors cursor-pointer">
+                <Link
+                  to="/services"
+                  key={s}
+                  className="flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-xl px-4 py-3 hover:bg-white/25 transition-colors cursor-pointer"
+                >
                   <Icon name="Check" size={18} className="text-[#ffad00] shrink-0" />
                   <span className="font-medium text-sm">{s}</span>
-                </div>
+                </Link>
               ))}
             </div>
+            <Link
+              to="/services"
+              className="md:hidden inline-flex items-center gap-1 text-sm font-semibold text-white/90 mt-5"
+            >
+              Все услуги и цены <Icon name="ArrowRight" size={16} />
+            </Link>
           </div>
         </div>
       </section>

@@ -13,6 +13,7 @@ const nav = [
   { label: 'Клиники', path: '/clinics' },
   { label: 'Диагностические центры', path: '/diagnostic-centers' },
   { label: 'Диагностика', path: '/diagnostics' },
+  { label: 'Услуги', path: '/services' },
 ];
 
 const cities = [
